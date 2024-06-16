@@ -234,7 +234,14 @@ function actualizarBotonesAgregar(){
         boton.addEventListener("click", agregarAlCarrito)
     })
 }
-const productosEnCarrito=[]
+let productosEnCarrito;
+const productosEnCarritoLS=JSON.parse(localStorage.getItem("productos-en-carrito"))
+if(productosEnCarritoLS){
+     productosEnCarrito=productosEnCarritoLS
+     actualizarNumerito()
+}else{
+    productosEnCarrito=[]
+}
 function agregarAlCarrito(e){
     const idBoton= e.currentTarget.id
     const productoAgregado=productos.find(producto =>producto.id===idBoton)
