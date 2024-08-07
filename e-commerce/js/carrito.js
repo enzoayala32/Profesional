@@ -94,9 +94,26 @@ function eliminarDelCarrito(e){
 }
 botonVaciar.addEventListener("click", vaciarCarrito)
 function vaciarCarrito(){
-    productosEnCarrito.length=0;
+    Swal.fire({
+        title: "¿estas seguro?",
+        icon: "question",
+        html: `se van a eliminar ${productosEnCarrito.reduce((acc,producto)=>acc+producto.cantidad,0)} productos`,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `si`,
+        cancelButtonText: `no`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            productosEnCarrito.length=0;
     localStorage.setItem("productos-en-carrito",JSON.stringify(productosEnCarrito))
     cargarProductosCarrito()
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });;
+  
 }
 
 function actualizarTotal(){
