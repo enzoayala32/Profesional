@@ -1,10 +1,15 @@
 import React from 'react';
 import { Counter } from './features/counter/Counter';
+import Header from './components/Header';
+import Home from './components/Home';
+import SearchPage from './components/searchPage';
 
 function App() {
   return (
     <div >
-      <h1>proyecto reserva hotelera</h1>
+      <Header/>
+      <Home/>
+      <SearchPage/>
     </div>
   );
 }
