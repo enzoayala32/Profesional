@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {AppBar, InputBase, makeStyles, Toolbar} from "@material-ui/core"
+import {AppBar, Avatar, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core"
 import logo from "../images/logo.png"
 import SearchIcon from "@material-ui/icons/Search"
 const Header = () => {
@@ -14,13 +14,15 @@ const Header = () => {
         <InputBase fullWidth placeholder='Search here...' inputProps={{className:classes.input}}/>
         <SearchIcon/>
       </div>
-     
-
+      <div className={classes.right}>
+        <Typography>Sign in</Typography>
+        <Avatar className={classes.avatar}/>
+      </div>
     </Toolbar>
   )
       
   return (
-    <AppBar>
+    <AppBar className={classes.root}>
       {
         mobile ? displayMobile(): displayDesktop()
       }
@@ -28,6 +30,13 @@ const Header = () => {
   )
 }
 const useStyle=makeStyles((theme)=>({
+  root:{
+    position:"sticky",
+    top: 0,
+    backgroundColor:"#fff",
+    zIndex:99,
+    width:"100vw",
+  },
   toolbar:{
     display:"flex",
     justifyContent:"space-between",
@@ -51,6 +60,15 @@ const useStyle=makeStyles((theme)=>({
     padding:theme.spacing(1,5,1,5),
     margin:theme.spacing(1,5,1,5),
   },
-}))
+  right:{
+    color:"#333",
+    display:"flex",
+    alignItems:"center",
+    marginLeft:theme.spacing(2),
+    },
+    avatar:{
+      marginLeft:theme.spacing(2),
+    }
+  }))
 
 export default Header
