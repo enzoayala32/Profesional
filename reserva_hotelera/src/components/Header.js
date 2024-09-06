@@ -1,15 +1,73 @@
-import React, { useState } from 'react'
-import {AppBar, Avatar, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core"
+import React, { useEffect, useState } from 'react'
+import {AppBar, Avatar, Drawer, IconButton, InputBase, List, ListItem, makeStyles, Toolbar, Typography} from "@material-ui/core"
 import logo from "../images/logo.png"
 import SearchIcon from "@material-ui/icons/Search"
+import MenuIcon from "@material-ui/icons/Menu"
+import {Link} from "react-router-dom"
 const Header = () => {
 
-  const [mobile,setMobile]=useState(false)
+  const [mobile,setMobile]=useState(true)
+  const [drawerOpen,setDrawerOpen]=useState(false)
   const classes=useStyle()
-  const displayMobile=()=>{}
+
+  useEffect(()=>{
+    const responsiveness=()=>window.innerWidth<900 ?setMobile(true) :setMobile(false)
+    responsiveness()
+    window.addEventListener("resize",()=>responsiveness())
+  },[])
+  const displayMobile=()=>{
+    const handleDrawerOpen=()=>{
+      setDrawerOpen(true)
+    }
+    const handleDrawerClose=()=>{
+      setDrawerOpen(false)
+    }
+    const headersData=["My Account","previus bookings","Log Out"]
+    const getDrawerChoices=()=>{
+      return headersData.map((data)=>{
+        return(
+          <List>
+            <ListItem>{data}</ListItem>
+          </List>
+        )
+      })
+    }
+
+    return(
+    <Toolbar className={classes.toolbar}>
+      <IconButton {...{
+        edge:"start",
+         color:"#ccc",
+         "aria-label":"menu",
+         "aria-haspopup":"true",
+         onClick: handleDrawerOpen
+         }}>
+        <MenuIcon fontSize='large'/>
+      </IconButton>
+      <Drawer {...{
+        anchor:"left",
+        open:drawerOpen,
+        onClose:handleDrawerClose,
+      }}>
+        <div>{getDrawerChoices()}</div>
+      </Drawer>
+      <Link to="/">
+        <img src={logo} className={classes.logo} alt='logo'></img>
+      </Link>
+    
+      <div className={classes.right}>
+        <Typography>Sign in</Typography>
+        <Avatar className={classes.avatar}/>
+      </div>
+    </Toolbar>
+    )
+  }
   const displayDesktop=()=>(
     <Toolbar className={classes.toolbar}>
-      <img src={logo} className={classes.logo}/>
+      <Link to="/">
+      <img src={logo} className={classes.logo} alt='logo'/>
+      </Link>
+      
       <div className={classes.center}>
         <InputBase fullWidth placeholder='Search here...' inputProps={{className:classes.input}}/>
         <SearchIcon/>
