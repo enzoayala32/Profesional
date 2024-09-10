@@ -19,7 +19,7 @@ const mockData=[
         description:"esplendid classic cocktail bar with live music",
     },
     {
-        scr:standard,
+        src:standard,
         title:"Standard room",
         description:"20 sqm rooms with full amenities",
         cat:"room",
