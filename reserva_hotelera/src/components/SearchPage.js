@@ -1,6 +1,7 @@
 import { Chip, makeStyles, Slider, Typography } from '@material-ui/core'
-import { chips } from '../mockData'
+import mockData,{ chips } from '../mockData'
 import { HighlightOffTwoTone } from '@material-ui/icons'
+import Results from './Results'
 
 const SearchPage = () => {
   const classes=useStyle()
@@ -29,6 +30,19 @@ const SearchPage = () => {
             valueLabelDisplay='auto'
             color='secondary'/>
         </div>
+        {
+          mockData
+          .filter((data)=>data.cat==="room")
+          .map(({src,title,description,price,stock},index)=>(
+            <Results title={title}
+            key={index}
+            src={src}
+            description={description}
+            price={price}
+            stock={stock}/>
+          ))
+        }
+        
     </div>
   )
 }
