@@ -2,9 +2,16 @@ import { Chip, makeStyles, Slider, Typography } from '@material-ui/core'
 import mockData,{ chips } from '../mockData'
 import { HighlightOffTwoTone } from '@material-ui/icons'
 import Results from './Results'
+import { useState } from 'react'
 
 const SearchPage = () => {
   const classes=useStyle()
+  const [value,setValue]=useState(400)
+
+ const handleChange=(e,newValue)=>{
+    setValue(newValue);
+    console.log(value)
+  }
   return (
     <div className={classes.root}>
         <Typography variant='h5' gutterBottom>Avaibable rooms </Typography>
@@ -23,7 +30,8 @@ const SearchPage = () => {
         </div>
         <div className={classes.selector}>
           <Typography gutterBottom>Prices</Typography>
-            <Slider 
+            <Slider value={value} 
+            onChange={handleChange}
             aria-labelledby="continuous-slider"
             min={100}
             max={400}
@@ -33,6 +41,7 @@ const SearchPage = () => {
         {
           mockData
           .filter((data)=>data.cat==="room")
+          .filter((data)=>data.price < value)
           .map(({src,title,description,price,stock},index)=>(
             <Results title={title}
             key={index}
