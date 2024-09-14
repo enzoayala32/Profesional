@@ -4,17 +4,28 @@ import { DateRangePicker } from 'react-date-range';
 import { Button, InputBase, makeStyles, Typography } from '@material-ui/core';
 import {People} from "@material-ui/icons"
 import { useNavigate } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { selectStart,setStart } from '../features/counter/startSlice';
+import { selectEnd,setEnd } from '../features/counter/endSlice';
 
-
-const selectionRange={
-  startDate:new Date(2024,9,6),
-  endDate:new Date(2024,9,6),
-  key:"selection"
-}
 const DatePicker = () => {
   const classes=useStyle()
   const navigate = useNavigate();
-  const handleSelect=()=>{}
+  const start=useSelector(selectStart)
+  const end=useSelector(selectEnd)
+  const dispatch=useDispatch()
+
+  const selectionRange={
+    startDate:start,
+    endDate:end,
+    key:"selection"
+  }
+
+  const handleSelect=(ranges)=>{
+    console.log(ranges)
+    dispatch(setStart(ranges.selection.startDate.getTime()))
+    dispatch(setEnd(ranges.selection.endDate.getTime()))
+  }
   return (
     <div className={classes.root}>
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>
