@@ -25,8 +25,8 @@ const mockData=[
         cat:"room",
         price:140,
         stock:12,
-        notAvaiblablestart:new Date(2024,9,6).getTime(),
-        notAvaiblableend:new Date(2024,9,6).getTime(),
+        notAvaiblablestart:new Date(2024,8,6).getTime(),
+        notAvaiblableend:new Date(2024,8,6).getTime(),
     },
     {
         src:outdoorpool,
@@ -40,8 +40,8 @@ const mockData=[
         cat:"room",
         price:170,
         stock:9,
-        notAvaiblablestart:new Date(2024,9,6).getTime(),
-        notAvaiblableend:new Date(2024,9,6).getTime(),
+        notAvaiblablestart:new Date(2024,8,6).getTime(),
+        notAvaiblableend:new Date(2024,8,6).getTime(),
     },
     {
         src:withbalcony,
@@ -50,8 +50,8 @@ const mockData=[
         cat:"room",
         price:175,
         stock:15,
-        notAvaiblablestart:new Date(2024,9,6).getTime(),
-        notAvaiblableend:new Date(2024,9,6).getTime(),
+        notAvaiblablestart:new Date(2024,8,6).getTime(),
+        notAvaiblableend:new Date(2024,8,6).getTime(),
     },
     {
         src: juniorsuite,
@@ -60,8 +60,8 @@ const mockData=[
         cat:"room",
         price:225,
         stock:10,
-        notAvaiblablestart:new Date(2024,9,6).getTime(),
-        notAvaiblableend:new Date(2024,9,6).getTime(),
+        notAvaiblablestart:new Date(2024,8,6).getTime(),
+        notAvaiblableend:new Date(2024,8,6).getTime(),
     },
     {
         src:suite,
@@ -70,8 +70,8 @@ const mockData=[
         cat:"room",
         price:350,
         stock:4,
-        notAvaiblablestart:new Date(2024,9,20).getTime(),
-        notAvaiblableend:new Date(2024,9,26).getTime(),
+        notAvaiblablestart:new Date(2024,8,16).getTime(),
+        notAvaiblableend:new Date(2024,8,26).getTime(),
     },
 ];
 
