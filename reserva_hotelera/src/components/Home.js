@@ -29,12 +29,12 @@ const Home = () => {
       <Grid container className={classes.section} spacing={3}>
         {
           mockData.map(({src,title,description},index)=>(
-            <Grid item sm="6" md="4" lg="3">
+            <Grid item sm="6" md="5" lg="4">
           <RoomCard src={src} 
           title={title} 
           description={description} 
           key={index}/>
-          </Grid>
+         </Grid>
         ))}
         
       </Grid>
