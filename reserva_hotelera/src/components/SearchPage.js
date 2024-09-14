@@ -3,10 +3,15 @@ import mockData,{ chips } from '../mockData'
 import { HighlightOffTwoTone } from '@material-ui/icons'
 import Results from './Results'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { selectStart } from '../features/counter/startSlice'
+import { selectEnd } from '../features/counter/endSlice'
 
 const SearchPage = () => {
   const classes=useStyle()
   const [value,setValue]=useState(400)
+  const start=useSelector(selectStart)
+  const end= useSelector(selectEnd)
 
  const handleChange=(e,newValue)=>{
     setValue(newValue);
@@ -42,6 +47,8 @@ const SearchPage = () => {
           mockData
           .filter((data)=>data.cat==="room")
           .filter((data)=>data.price < value)
+          .filter((data)=>end < data.notAvaiblablestart ||
+                 start > data.notAvaiblableend)
           .map(({src,title,description,price,stock},index)=>(
             <Results title={title}
             key={index}
