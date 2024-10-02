@@ -26,11 +26,17 @@ const useStyle=makeStyles((theme)=>({
     },
     left:{
         margin:theme.spacing(2,5,5,5),
+        [theme.breakpoints.down("sm")]:{
+            margin:theme.spacing(1,0.5,0,0)
+        }
     },
     image:{
         maxWidth:"400px",
         height:"auto",
         borderRadius:"10px",
+        [theme.breakpoints.down("sm")]:{
+            maxWidth:"200px",
+        }
     },
     number:{
         fontWeight:"1000",
