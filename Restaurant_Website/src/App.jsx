@@ -5,6 +5,7 @@ import Menu from './sections/Menu'
 import Items from './sections/Items'
 import Banner from './sections/Banner'
 import Contact from './sections/Contact'
+import Footer from './sections/Footer'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
     <Items/>
     <Banner/>
     <Contact/>
+    <Footer/>
     </>
   )
 }
